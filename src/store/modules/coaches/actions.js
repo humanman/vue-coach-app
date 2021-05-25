@@ -1,3 +1,5 @@
+
+const BASE_URL = process.env.BASE_URL
 export default {
   async registerCoach(context, data) {
     const userId = context.rootGetters.userId;
@@ -8,7 +10,7 @@ export default {
       hourlyRate: data.rate,
       areas: data.areas,
     };
-    const response = await fetch(`https://vue-coach-tutorial-7ce04-default-rtdb.firebaseio.com/coaches/${userId}.json`,{
+    const response = await fetch(`${BASE_URL}/coaches/${userId}.json`,{
       method: 'PUT',
       body: JSON.stringify(coachData)
     });
@@ -23,8 +25,10 @@ export default {
       id: userId
     });
   },
-  async loadCoaches(context) {
-    const response = await fetch(`https://vue-coach-tutorial-7ce04-default-rtdb.firebaseio.com/coaches.json`);
+  async loadCoaches(context, payload) {
+    if(!payload.forceRefresh && !context.getters.shouldUpdate) return;
+
+    const response = await fetch(`${BASE_URL}/coaches.json`);
 
     const responseData = await response.json();
 
@@ -47,5 +51,6 @@ export default {
       coaches.push(coach);
     }
     context.commit('setCoaches', coaches);
+    context.commit('setFetchTimestamp', coaches);
   }
 };
