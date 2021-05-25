@@ -64,9 +64,10 @@ export default {
         coachId: this.$route.params.id
       }
       this.$store.dispatch('requests/contactCoach', formData)
-      this.email.val = ''
-      this.message.val = ''
-      this.postSubmit = true
+      // this.email.val = ''
+      // this.message.val = ''
+      // this.postSubmit = true
+      this.$router.replace('/coaches');
     }
   }
 }

@@ -1,10 +1,6 @@
 <template>
   <div>
     <the-header></the-header>
-    <div id="nav">
-      <base-button to="/coaches">Coaches</base-button>
-      <base-button to="/requests">Requests</base-button>
-    </div>
     <router-view></router-view>
   </div>
 </template>
