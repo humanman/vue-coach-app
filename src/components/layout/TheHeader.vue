@@ -1,13 +1,13 @@
 <template>
   <header>
     <nav>
-      <h1><router-link to="/">Find a Coach</router-link></h1>
+      <h1><base-button link to="/">Find a Coach</base-button></h1>
       <ul>
         <li>
-          <router-link to="/coaches">All Coached</router-link>
+          <base-button link to="/coaches">All Coaches</base-button>
         </li>
         <li>
-          <router-link to="/requests">Requests</router-link>
+          <base-button link to="/requests">Requests</base-button>
         </li>
       </ul>
     </nav>
